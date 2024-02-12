@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aub.kfh.mw</groupId>
-	<artifactId>mw</artifactId>
+	<artifactId>middleware</artifactId>
 	<version>1.0.0</version>
 	<name>mw</name>
 	<description>MW Project from springboot</description>
