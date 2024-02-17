@@ -6,6 +6,7 @@ FROM openjdk:17-oracle AS build
 WORKDIR /opt/app
 
 COPY ./ /opt/app
+RUN apt-get install -y maven
 RUN mvn clean install -DskipTests
 
 
