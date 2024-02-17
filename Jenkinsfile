@@ -4,14 +4,12 @@ node {
 
 try{
      notifyBuild('STARTED')
-     stage('Clone Repo') {
-        // for display purposes
-        // Get some code from a GitHub repository
+     stage('Clone Repo from MW') {
         git url: 'https://github.com/ansarikaleem/mw.git',
             credentialsId: 'springdeploy-user',
             branch: 'main'
      }
-      stage('Build docker') {
+      stage('Build docker for MW') {
              dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
       }
 
