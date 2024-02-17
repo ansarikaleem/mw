@@ -47,9 +47,9 @@ def notifyBuild(String buildStatus = 'STARTED'){
 
   // Email notification
     emailext (
-         to: "admin@gmail.com",
-         subject: subject_email,
-         body: details,
+         to: "pbhapps@gmail.com",
+         subject: "Jenkins Build",
+         body: "A Build has been generated",
          recipientProviders: [[$class: 'DevelopersRecipientProvider']]
        )
 }
