@@ -6,7 +6,7 @@ FROM openjdk:17-oracle AS build
 WORKDIR /opt/app
 
 COPY ./ /opt/app
-RUN mvn clean install -DskipTests
+#RUN mvn clean install -DskipTests
 
 
 # Run spring boot in Docker
