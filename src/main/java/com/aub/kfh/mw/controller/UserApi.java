@@ -11,10 +11,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "User API", description = "All User related API")
 public interface UserApi {
 	
-	@Operation(summary = "Post User", description = "Post User Body")
-	public ResponseEntity<?> postUser(@RequestBody User user);
+//	@Operation(summary = "Create Token", description = "Create JWT Token")
+//	public ResponseEntity<?> createToken(@RequestBody User user);
 	
 	@Operation(summary = "Login API", description = "Login User ")
 	public ResponseEntity<?> loginUser(@RequestBody User user);
+	
+	@Operation(summary = "Post User", description = "Post User Body")
+	public ResponseEntity<?> postUser(@RequestBody User user);
 
 }

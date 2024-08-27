@@ -24,15 +24,15 @@ public class UserController implements UserApi{
 	private JwtGenerator jwtGenerator;
 
 
-	@PostMapping("/register")
-	public ResponseEntity<?> postUser(@RequestBody User user) {
-		try {
-			userService.saveUser(user);
-			return new ResponseEntity<>(user, HttpStatus.CREATED);
-		} catch (Exception e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-		}
-	}
+
+
+//	@Override
+//	@PostMapping("/token")
+//	public ResponseEntity<?> createToken(User user) {
+//		
+//		return new ResponseEntity<>(jwtGenerator.generateToken(user), HttpStatus.OK);
+//	}
+	
 
 	@PostMapping("/login")
 	public ResponseEntity<?> loginUser(@RequestBody User user) {
@@ -41,11 +41,20 @@ public class UserController implements UserApi{
 				throw new UserNotFoundException("UserName or Password is Empty");
 			}
 			User userData = userService.getUserByNameAndPassword(user.getUserName(), user.getPassword());
-			if (userData == null) {
-				throw new UserNotFoundException("UserName or Password is Invalid");
-			}
-			return new ResponseEntity<>(jwtGenerator.generateToken(user), HttpStatus.OK);
+			userData.setToken(jwtGenerator.generateToken(userData));
+			
+			return new ResponseEntity<>(userData, HttpStatus.OK);
 		} catch (UserNotFoundException e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+		}
+	}
+	
+	@PostMapping("/register")
+	public ResponseEntity<?> postUser(@RequestBody User user) {
+		try {
+			userService.saveUser(user);
+			return new ResponseEntity<>(user, HttpStatus.CREATED);
+		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
 		}
 	}

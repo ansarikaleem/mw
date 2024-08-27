@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserByNameAndPassword(String name, String password) throws UserNotFoundException {
 		User user = new User();
-		user.setUserName("user");
-		user.setPassword("password");
+		user.setUserName(name);
+		user.setPassword(password);
 		return user;
 	}
 }

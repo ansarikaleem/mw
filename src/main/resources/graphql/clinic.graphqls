@@ -1,0 +1,10 @@
+type Clinic {
+    clinicId: ID!
+    clinicName: String!
+    clinicAddress: String!
+}
+
+# The Root Query for the application
+type Query {
+    recentClinics(count: Int, offset: Int): [Clinic]!
+}
